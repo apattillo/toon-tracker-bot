@@ -19,6 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 bootJar {
     baseName = 'ed-integration-service'
     version = '0.1.0'
+    launchScript()
 }
 
 sourceCompatibility = 1.8
