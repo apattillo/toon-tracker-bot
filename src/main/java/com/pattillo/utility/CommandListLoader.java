@@ -9,6 +9,6 @@ import java.io.IOException;
 public class CommandListLoader {
     public static CommandList load() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new ClassPathResource("commands.json").getFile(), CommandList.class);
+        return mapper.readValue(new ClassPathResource("commands.json").getInputStream(), CommandList.class);
     }
 }
