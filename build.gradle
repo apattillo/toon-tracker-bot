@@ -1,0 +1,43 @@
+group 'com.pattillo'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'ed-integration-service'
+    version = '0.1.0'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+//    runtime("com.h2database:h2")
+
+    compile("org.springframework.boot:spring-boot-starter-web:2.1.2.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    compile("mysql:mysql-connector-java")
+    compile("net.dv8tion:JDA:3.8.3_460")
+
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("junit:junit:4.12")
+}

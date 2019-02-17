@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "name": "!ping",
+      "description": "Test ping to verify bot response",
+      "handler": "PingHandler"
+    },
+    {
+      "name": "!help",
+      "description": "List all available commands and their descriptions",
+      "handler": "HelpHandler"
+    },
+    {
+      "name": "!builds",
+      "description": "List all ship build links",
+      "handler": "BuildsHandler"
+    },
+    {
+      "name": "!guides",
+      "description": "List all guide links",
+      "handler": "GuidesHandler"
+    },
+    {
+      "name": "!saveBuild",
+      "description": "Saves a build. Use a comma to separate the title and the link (don't use a comma in the title). Usage: !saveBuild Title of the Build, http://link.to.build",
+      "handler": "SaveBuildHandler"
+    },
+    {
+      "name": "!saveGuide",
+      "description": "Saves a guide. Use a comma to separate the title and the link (don't use a comma in the title). Usage: !saveGuide Title of the Guide, http://link.to.guide",
+      "handler": "SaveGuideHandler"
+    }
+  ]
+}
