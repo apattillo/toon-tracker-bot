@@ -1,5 +1,6 @@
 package com.pattillo.handlers;
 
+import com.pattillo.client.LinkShortener;
 import com.pattillo.entity.Build;
 import com.pattillo.repository.BuildRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ public class SaveBuildHandler implements CommandHandler {
 
     @Autowired
     private BuildRepository buildRepository;
+
+    @Autowired
+    private LinkShortener linkShortener;
 
     @Override
     public String handle(String commandString) {
@@ -22,10 +26,14 @@ public class SaveBuildHandler implements CommandHandler {
         // dirty - just saving build name, build link.. can clean this up with a json input rather than fixed fields
         Build buildObject = new Build();
         buildObject.setName(splitCommand[0].trim());
-        buildObject.setLink(splitCommand[1].trim());
+        buildObject.setLink(shortenUrl(splitCommand[1].trim()));
 
         buildRepository.save(buildObject);
 
         return String.format("`Saved build - Name: %s, Link:` <%s>", buildObject.getName(), buildObject.getLink());
+    }
+
+    private String shortenUrl(String longUrl) {
+        return linkShortener.shorten(longUrl);
     }
 }
