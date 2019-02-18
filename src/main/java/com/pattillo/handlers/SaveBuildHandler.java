@@ -26,14 +26,10 @@ public class SaveBuildHandler implements CommandHandler {
         // dirty - just saving build name, build link.. can clean this up with a json input rather than fixed fields
         Build buildObject = new Build();
         buildObject.setName(splitCommand[0].trim());
-        buildObject.setLink(shortenUrl(splitCommand[1].trim()));
+        buildObject.setLink(linkShortener.shorten(splitCommand[1].trim()));
 
         buildRepository.save(buildObject);
 
         return String.format("`Saved build - Name: %s, Link:` <%s>", buildObject.getName(), buildObject.getLink());
-    }
-
-    private String shortenUrl(String longUrl) {
-        return linkShortener.shorten(longUrl);
     }
 }

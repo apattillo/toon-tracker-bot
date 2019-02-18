@@ -1,25 +1,18 @@
 package com.pattillo.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Guide")
 public class Guide {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
     private String name;
 
+    @NotNull
     private String link;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

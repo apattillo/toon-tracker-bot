@@ -25,6 +25,12 @@ public class CommandService {
     @Autowired
     private SaveGuideHandler saveGuideHandler;
 
+    @Autowired
+    DeleteBuildHandler deleteBuildHandler;
+
+    @Autowired
+    DeleteGuideHandler deleteGuideHandler;
+
     public String handle(String commandString) throws InstantiationException, IllegalAccessException {
         String response;
 
@@ -40,6 +46,10 @@ public class CommandService {
             response = saveBuildHandler.handle(commandString);
         } else if (commandString.startsWith("!saveGuide")) {
             response = saveGuideHandler.handle(commandString);
+        } else if (commandString.startsWith("!deleteBuild")) {
+            response = deleteBuildHandler.handle(commandString);
+        } else if (commandString.startsWith("!deleteGuide")) {
+            response = deleteGuideHandler.handle(commandString);
         } else {
             response = "I don't know what that is";
         }

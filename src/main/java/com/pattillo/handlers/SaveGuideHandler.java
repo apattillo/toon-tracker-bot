@@ -1,5 +1,6 @@
 package com.pattillo.handlers;
 
+import com.pattillo.client.LinkShortener;
 import com.pattillo.entity.Guide;
 import com.pattillo.repository.GuideRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ public class SaveGuideHandler implements CommandHandler {
 
     @Autowired
     private GuideRepository guideRepository;
+
+    @Autowired
+    private LinkShortener linkShortener;
 
     @Override
     public String handle(String commandString) {
@@ -22,7 +26,7 @@ public class SaveGuideHandler implements CommandHandler {
         // dirty - just saving name and link.. can clean this up with a json input rather than fixed fields
         Guide guideObject = new Guide();
         guideObject.setName(splitCommand[0].trim());
-        guideObject.setLink(splitCommand[1].trim());
+        guideObject.setLink(linkShortener.shorten(splitCommand[1].trim()));
 
         guideRepository.save(guideObject);
 

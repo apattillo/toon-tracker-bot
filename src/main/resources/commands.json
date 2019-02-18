@@ -2,22 +2,22 @@
   "commands": [
     {
       "name": "!ping",
-      "description": "Test ping to verify bot response",
+      "description": "Test ping to verify bot response. Usage: !ping",
       "handler": "PingHandler"
     },
     {
       "name": "!help",
-      "description": "List all available commands and their descriptions",
+      "description": "List all available commands and their descriptions. Usage: !help",
       "handler": "HelpHandler"
     },
     {
       "name": "!builds",
-      "description": "List all ship build links",
+      "description": "List all ship build links. Usage: !builds",
       "handler": "BuildsHandler"
     },
     {
       "name": "!guides",
-      "description": "List all guide links",
+      "description": "List all guide links. Usage: !guides",
       "handler": "GuidesHandler"
     },
     {
@@ -29,6 +29,16 @@
       "name": "!saveGuide",
       "description": "Saves a guide. Use a comma to separate the title and the link (don't use a comma in the title). Usage: !saveGuide Title of the Guide, http://link.to.guide",
       "handler": "SaveGuideHandler"
+    },
+    {
+      "name": "!deleteBuild",
+      "description": "Removes a build with the provided name (case sensitive).  Usage: !deleteBuild Title of the Build",
+      "handler": "DeleteBuildHandler"
+    },
+    {
+      "name": "!deleteGuide",
+      "description": "Removes a guide with the provided name (case sensitive).  Usage: !deleteGuide Title of the Guide",
+      "handler": "DeleteGuideHandler"
     }
   ]
 }

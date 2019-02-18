@@ -20,7 +20,15 @@ public class HelpHandler implements CommandHandler {
 
         if (null != commandList) {
             for (Command command : commandList.getCommands()) {
-                sb.append(String.format("\t%s: %s\n", command.getName(), command.getDescription()));
+                if (command.getDescription().contains("Usage:")) {
+                    // put Usage example on its own line
+                    String firstLine = command.getDescription().substring(0, command.getDescription().indexOf("Usage:"));
+                    String secondLine = command.getDescription().substring(command.getDescription().indexOf("Usage:"));
+                    sb.append(String.format("\t%s: %s\n", command.getName(), firstLine));
+                    sb.append(String.format("\t\t%s\n", secondLine));
+                } else {
+                    sb.append(String.format("\t%s: %s\n", command.getName(), command.getDescription()));
+                }
             }
         }
 
