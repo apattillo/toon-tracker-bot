@@ -1,17 +1,12 @@
 package com.pattillo.service;
 
 import com.pattillo.handlers.*;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommandService {
-
-    @Autowired
-    private BuildsHandler buildsHandler;
-
-    @Autowired
-    private GuidesHandler guidesHandler;
 
     @Autowired
     private HelpHandler helpHandler;
@@ -20,36 +15,32 @@ public class CommandService {
     private PingHandler pingHandler;
 
     @Autowired
-    private SaveBuildHandler saveBuildHandler;
+    private SaveToonHandler saveToonHandler;
 
     @Autowired
-    private SaveGuideHandler saveGuideHandler;
+    private UpdateToonHandler updateToonHandler;
 
     @Autowired
-    DeleteBuildHandler deleteBuildHandler;
+    private GetToonsHandler getToonsHandler;
 
     @Autowired
-    DeleteGuideHandler deleteGuideHandler;
+    private DeleteToonHandler deleteToonHandler;
 
-    public String handle(String commandString) throws InstantiationException, IllegalAccessException {
+    public String handle(String commandString, MessageReceivedEvent event) {
         String response;
 
         if (commandString.startsWith("!ping")) {
-            response = pingHandler.handle(commandString);
+            response = pingHandler.handle(commandString, event);
         } else if (commandString.startsWith("!help")) {
-            response = helpHandler.handle(commandString);
-        } else if (commandString.startsWith("!builds")) {
-            response = buildsHandler.handle(commandString);
-        } else if (commandString.startsWith("!guides")) {
-            response = guidesHandler.handle(commandString);
-        } else if (commandString.startsWith("!saveBuild")) {
-            response = saveBuildHandler.handle(commandString);
-        } else if (commandString.startsWith("!saveGuide")) {
-            response = saveGuideHandler.handle(commandString);
-        } else if (commandString.startsWith("!deleteBuild")) {
-            response = deleteBuildHandler.handle(commandString);
-        } else if (commandString.startsWith("!deleteGuide")) {
-            response = deleteGuideHandler.handle(commandString);
+            response = helpHandler.handle(commandString, event);
+        } else if (commandString.startsWith("!toons")) {
+            response = getToonsHandler.handle(commandString, event);
+        } else if (commandString.startsWith("!addToon")) {
+            response = saveToonHandler.handle(commandString, event);
+        } else if (commandString.startsWith("!updateToon")) {
+            response = updateToonHandler.handle(commandString, event);
+        } else if (commandString.startsWith("!deleteToon")) {
+            response = deleteToonHandler.handle(commandString, event);
         } else {
             response = "I don't know what that is";
         }

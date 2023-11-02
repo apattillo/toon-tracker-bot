@@ -3,12 +3,13 @@ package com.pattillo.handlers;
 import com.pattillo.model.Command;
 import com.pattillo.model.CommandList;
 import com.pattillo.utility.CommandListLoader;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
 public class HelpHandler implements CommandHandler {
     @Override
-    public String handle(String commandString) {
+    public String handle(String commandString, MessageReceivedEvent event) {
         StringBuilder sb = new StringBuilder();
         CommandList commandList = null;
         try {

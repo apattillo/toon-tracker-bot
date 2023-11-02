@@ -1,9 +1,10 @@
 package com.pattillo.service;
 
 import com.pattillo.listener.BotListener;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ public class Bot implements DiscordBot {
     @Autowired
     public Bot(BotListener botListener) {
         try {
-            jda = new JDABuilder(AccountType.BOT)
-                    .setToken(SECRET_TOKEN)
-                    .addEventListener(botListener)
+            jda = JDABuilder.createDefault(SECRET_TOKEN)
+                    .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                    .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                    .setMemberCachePolicy(MemberCachePolicy.ALL)
+                    .addEventListeners(botListener)
                     .build();
         } catch (Exception e) {
             e.printStackTrace();

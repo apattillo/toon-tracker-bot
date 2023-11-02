@@ -11,34 +11,24 @@
       "handler": "HelpHandler"
     },
     {
-      "name": "!builds",
-      "description": "List all ship build links. Usage: !builds",
-      "handler": "BuildsHandler"
+      "name": "!toons",
+      "description": "List all toons. Usage: !toons",
+      "handler": "GetToonsHandler"
     },
     {
-      "name": "!guides",
-      "description": "List all guide links. Usage: !guides",
-      "handler": "GuidesHandler"
+      "name": "!addToon",
+      "description": "Adds a toon, level can have up to 2 decimal places. Usage: !addToon <ownerName> <toonName> <class> <level>",
+      "handler": "AddToonHandler"
     },
     {
-      "name": "!saveBuild",
-      "description": "Saves a build. Use a comma to separate the title and the link (don't use a comma in the title). Usage: !saveBuild Title of the Build, http://link.to.build",
-      "handler": "SaveBuildHandler"
+      "name": "!updateToon",
+      "description": "Updates a toon. Usage: !updateToon <toonName> <level>",
+      "handler": "UpdateToonHandler"
     },
     {
-      "name": "!saveGuide",
-      "description": "Saves a guide. Use a comma to separate the title and the link (don't use a comma in the title). Usage: !saveGuide Title of the Guide, http://link.to.guide",
-      "handler": "SaveGuideHandler"
-    },
-    {
-      "name": "!deleteBuild",
-      "description": "Removes a build with the provided name (case sensitive).  Usage: !deleteBuild Title of the Build",
-      "handler": "DeleteBuildHandler"
-    },
-    {
-      "name": "!deleteGuide",
-      "description": "Removes a guide with the provided name (case sensitive).  Usage: !deleteGuide Title of the Guide",
-      "handler": "DeleteGuideHandler"
+      "name": "!deleteToon",
+      "description": "Removes a toon. Usage: !deleteToon <toonName>",
+      "handler": "DeleteToonHandler"
     }
   ]
 }
