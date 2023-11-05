@@ -35,16 +35,27 @@ public class GetToonsHandler implements CommandHandler {
         sb.append("\n");
 
         Set<String> owners = new HashSet<>();
+        List<ToonInfo> thisOwnersToons = new ArrayList<>();
         for (ToonInfo toon : toons) {
             owners.add(toon.getOwnerName());
         }
         for (String owner : owners) {
+            thisOwnersToons.clear();
             sb.append(String.format("%s:\n", owner));
             sb.append("```");
             for (ToonInfo toon : toons) {
                 if (toon.getOwnerName().equals(owner)) {
-                    sb.append(String.format("%s, %s %s\n", toon.getToonName(), toon.getToonLevel(), toon.getToonClass()));
+                    thisOwnersToons.add(toon);
                 }
+            }
+            Collections.sort(thisOwnersToons, new Comparator<ToonInfo>() {
+                @Override
+                public int compare(ToonInfo o1, ToonInfo o2) {
+                    return (int) (Double.parseDouble(o2.getToonLevel()) - Double.parseDouble(o1.getToonLevel()));
+                }
+            });
+            for (ToonInfo toon : thisOwnersToons) {
+                sb.append(String.format("%s, %s %s\n", toon.getToonName(), toon.getToonLevel(), toon.getToonClass()));
             }
             sb.append("```");
             sb.append("\n");
