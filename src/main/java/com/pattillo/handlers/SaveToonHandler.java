@@ -40,8 +40,20 @@ public class SaveToonHandler implements CommandHandler {
 
             String level = splitCommand[3];
 
-            if (!MemberUtility.isValidLevel(level)) {
+            if (response == null && !MemberUtility.isValidLevel(level)) {
                 response = "`Invalid level`";
+            }
+
+            String race = splitCommand[2];
+
+            if (response == null && !MemberUtility.isValidRace(race)) {
+                response = "`Invalid race - use the 3 letter race code (BAR, DEF, DWF, etc)`";
+            }
+
+            String toonClass = splitCommand[3];
+
+            if (response == null && !MemberUtility.isValidClass(toonClass)) {
+                response = "`Invalid class: " + toonClass;
             }
 
             if (response == null) {
@@ -49,7 +61,8 @@ public class SaveToonHandler implements CommandHandler {
                 toonInfo.setOwnerId(ownerIdRaw);
                 toonInfo.setOwnerName(ownerUserName);
                 toonInfo.setToonName(splitCommand[1]);
-                toonInfo.setToonClass(splitCommand[2]);
+                toonInfo.setToonRace(race.toUpperCase());
+                toonInfo.setToonClass(toonClass);
                 toonInfo.setToonLevel(level);
 
                 toonInfoRepo.addToon(toonInfo);

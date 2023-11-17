@@ -5,16 +5,18 @@ public class ToonInfo {
     private String ownerId;
     private String ownerName;
     private String toonName;
+    private String toonRace;
     private String toonClass;
     private String toonLevel;
 
     public ToonInfo() {
     }
 
-    public ToonInfo(String ownerId, String ownerName, String toonName, String toonClass, String toonLevel) {
+    public ToonInfo(String ownerId, String ownerName, String toonName, String toonRace, String toonClass, String toonLevel) {
         this.ownerId = ownerId;
         this.ownerName = ownerName;
         this.toonName = toonName;
+        this.toonRace = toonRace;
         this.toonClass = toonClass;
         this.toonLevel = toonLevel;
     }
@@ -41,6 +43,14 @@ public class ToonInfo {
 
     public void setToonName(String toonName) {
         this.toonName = toonName;
+    }
+
+    public String getToonRace() {
+        return toonRace;
+    }
+
+    public void setToonRace(String toonRace) {
+        this.toonRace = toonRace;
     }
 
     public String getToonClass() {

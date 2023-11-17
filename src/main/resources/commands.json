@@ -17,7 +17,7 @@
     },
     {
       "name": "!addToon",
-      "description": "Adds a toon, level can have up to 2 decimal places. Usage: !addToon <ownerName> <toonName> <class> <level>",
+      "description": "Adds a toon, level can have up to 2 decimal places. Usage: !addToon <ownerName> <toonName> <3 letter race code> <class> <level>",
       "handler": "AddToonHandler"
     },
     {

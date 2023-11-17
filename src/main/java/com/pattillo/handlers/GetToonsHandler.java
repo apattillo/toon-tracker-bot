@@ -55,7 +55,7 @@ public class GetToonsHandler implements CommandHandler {
                 }
             });
             for (ToonInfo toon : thisOwnersToons) {
-                sb.append(String.format("%s, %s %s\n", toon.getToonName(), toon.getToonLevel(), toon.getToonClass()));
+                sb.append(String.format("%s, %s %s %s\n", toon.getToonName(), toon.getToonLevel(), toon.getToonRace(), toon.getToonClass()));
             }
             sb.append("```");
             sb.append("\n");

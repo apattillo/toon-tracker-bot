@@ -64,9 +64,10 @@ public class ToonInfoRepo {
                 String ownerId = data[0];
                 String ownerName = data[1];
                 String toonName = data[2];
-                String toonClass = data[3];
-                String toonLevel = data[4];
-                loadedCharacters.put(toonName, new ToonInfo(ownerId, ownerName, toonName, toonClass, toonLevel));
+                String toonRace = data[3];
+                String toonClass = data[4];
+                String toonLevel = data[5];
+                loadedCharacters.put(toonName, new ToonInfo(ownerId, ownerName, toonName, toonRace, toonClass, toonLevel));
             }
             reader.close();
         } catch (IOException e) {
@@ -80,7 +81,7 @@ public class ToonInfoRepo {
             BufferedWriter writer = new BufferedWriter(new FileWriter(characterDataFile));
             for (String toonName : characters.keySet()) {
                 ToonInfo toonInfo = characters.get(toonName);
-                writer.write(toonInfo.getOwnerId() + "," + toonInfo.getOwnerName() + "," + toonName + "," + toonInfo.getToonClass() + "," + toonInfo.getToonLevel() + "\n");
+                writer.write(toonInfo.getOwnerId() + "," + toonInfo.getOwnerName() + "," + toonName + "," + toonInfo.getToonRace() + "," + toonInfo.getToonClass() + "," + toonInfo.getToonLevel() + "\n");
             }
             writer.close();
         } catch (IOException e) {
