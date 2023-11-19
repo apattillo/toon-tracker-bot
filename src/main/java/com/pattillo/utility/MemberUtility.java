@@ -3,6 +3,7 @@ package com.pattillo.utility;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MemberUtility {
     private static final int MAX_LEVEL = 60;
@@ -66,14 +67,16 @@ public class MemberUtility {
             case "TRL":
             case "ELF":
                 isValid = true;
+                break;
             default:
                 isValid = false;
+                break;
         }
         return isValid;
     }
 
     public static boolean isValidClass(String toonClass) {
-        boolean isValid = false;
+        boolean isValid;
 
         switch (toonClass.toLowerCase()) {
             case "bard":
@@ -91,64 +94,17 @@ public class MemberUtility {
             case "warrior":
             case "wizard":
                 isValid = true;
+                break;
             default:
                 isValid = false;
+                break;
         }
         return isValid;
     }
 
-    public static double getRaceMultipler(String race) {
-        double multipler;
-
-        switch (race.toUpperCase()) {
-            case "BAR":
-                multipler = 10.5d;
-            case "HFL":
-                multipler = 9.5d;
-            case "IKS":
-            case "TRL":
-                multipler = 12d;
-            case "OGR":
-                multipler = 11.5d;
-            default:
-                multipler = 10d;
-        }
-        return multipler;
-    }
-
-    public static double getHellModifier(int level) {
-        double hellModifier;
-        if (level >= 30 && level < 35) {
-            hellModifier = 1.1d;
-        } else if (level >= 35 && level < 40) {
-            hellModifier = 1.2d;
-        } else if (level >= 40 && level < 45) {
-            hellModifier = 1.3d;
-        } else if (level >= 45 && level < 51) {
-            hellModifier = 1.4d;
-        } else if (level == 51) {
-            hellModifier = 1.5d;
-        } else if (level == 52) {
-            hellModifier = 1.6d;
-        } else if (level == 53) {
-            hellModifier = 1.7d;
-        } else if (level == 54) {
-            hellModifier = 1.9d;
-        } else if (level == 55) {
-            hellModifier = 2d;
-        } else if (level == 56) {
-            hellModifier = 2.1d;
-        } else if (level == 57) {
-            hellModifier = 2.2d;
-        } else if (level == 58) {
-            hellModifier = 2.3d;
-        } else if (level == 59) {
-            hellModifier = 2.5d;
-        } else if (level == 60) {
-            hellModifier = 2.6d;
-        } else {
-            hellModifier = 1d;
-        }
-        return hellModifier;
+    public static double round(double value, int places) {
+        BigDecimal bd = BigDecimal.valueOf(value);
+        BigDecimal rounded = bd.setScale(places, RoundingMode.HALF_UP);
+        return rounded.doubleValue();
     }
 }
