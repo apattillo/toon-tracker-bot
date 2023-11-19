@@ -38,7 +38,7 @@ public class SaveToonHandler implements CommandHandler {
                 }
             }
 
-            String level = splitCommand[3];
+            String level = splitCommand[4];
 
             if (response == null && !MemberUtility.isValidLevel(level)) {
                 response = "`Invalid level`";
